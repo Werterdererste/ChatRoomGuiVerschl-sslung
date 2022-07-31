@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ChatRoomGuiVerschlüsslung", "ChatRommGuiVerschlüsslung\ChatRoomGuiVerschlüsslung.pyproj", "{23D789B2-C079-484A-A6B5-5B7EC646B528}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23D789B2-C079-484A-A6B5-5B7EC646B528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D789B2-C079-484A-A6B5-5B7EC646B528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52C07CB0-AD10-4CBC-AC08-BEFB06DF8C2F}
+	EndGlobalSection
+EndGlobal
