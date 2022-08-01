@@ -1,19 +1,23 @@
 import tkinter as tk
 
-root = tk.Tk()
-root.title("chat")
-root.geometry("400x600")
-root.resizable(width=False, height=False)
+class guiClient():
 
-eingabefeldWert = tk.StringVar()
-
-
-def senden():
-    label = tk.Label(root, text=eingabefeldWert.get()).pack(side="right")
-    eingabefeldWert.set("")
-
-eingabefeld = tk.Entry(root, textvariable= eingabefeldWert).pack(anchor="s", side="left", expand=True, fill="x", padx=10, pady = 10, ipady = 5)
-b1 = tk.Button(root, text ="--->", command=senden).pack(anchor="s", side="left" , padx=10, pady = 10, ipady = 5)
+    def __init__(self):
+        self.__root = tk.Tk()        
+        self.__eingabefeldWert = tk.StringVar()
 
 
-root.mainloop()
+    def senden(self):
+        label = tk.Label(self.__root, text=self.__eingabefeldWert.get()).pack(anchor="e" ,side="top")
+        self.__eingabefeldWert.set("")
+
+    def start(self):
+        self.__root.title("chat")
+        self.__root.geometry("400x600")
+        self.__root.resizable(width=False, height=False)
+
+
+        eingabefeld = tk.Entry(self.__root, textvariable= self.__eingabefeldWert).pack(anchor="s", side="left", expand=True, fill="x", padx=10, pady = 10, ipady = 5)
+        b1 = tk.Button(self.__root, text ="--->", command=self.senden).pack(anchor="s", side="left" , padx=10, pady = 10, ipady = 5)
+
+        self.__root.mainloop()

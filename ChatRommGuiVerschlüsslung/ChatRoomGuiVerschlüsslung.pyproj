@@ -5,7 +5,7 @@
     <ProjectGuid>23d789b2-c079-484a-a6b5-5b7ec646b528</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>guiClient.py</StartupFile>
+    <StartupFile>program.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="client.py" />
     <Compile Include="guiClient.py" />
+    <Compile Include="program.py" />
+    <Compile Include="server.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
