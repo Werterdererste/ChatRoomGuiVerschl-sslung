@@ -16,6 +16,7 @@ class program():
     def main(self):
         t = Thread(target=self.ServerStart)
         t.start()
+
         s = Thread(target=self.ClientStart)
         s.start()
 

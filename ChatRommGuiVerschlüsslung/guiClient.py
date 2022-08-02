@@ -10,17 +10,28 @@ class guiClient():
 
 
     def senden(self):
-        label = tk.Label(self.__root, text=self.__eingabefeldWert.get()).pack(anchor="e" ,side="top")
+        tk.Label(self.__root, text=self.__eingabefeldWert.get()).pack(anchor="e" ,side="top")
+        self.__client.send_nachricht(self.__eingabefeldWert.get())
         self.__eingabefeldWert.set("")
 
     def start(self):
+        self.__client.conect_to_server()
+
         self.__root.title("chat")
         self.__root.geometry("400x600")
         self.__root.resizable(width=False, height=False)
 
+        tk.Entry(self.__root, textvariable = self.__eingabefeldWert).pack(anchor="s", side="left", expand=True, fill="x", padx=10, pady = 10, ipady = 5)
+        tk.Button(self.__root, text ="--->", command = self.senden).pack(anchor="s", side="left" , padx=10, pady = 10, ipady = 5)
 
-        eingabefeld = tk.Entry(self.__root, textvariable= self.__eingabefeldWert).pack(anchor="s", side="left", expand=True, fill="x", padx=10, pady = 10, ipady = 5)
-        b1 = tk.Button(self.__root, text ="--->", command=self.senden).pack(anchor="s", side="left" , padx=10, pady = 10, ipady = 5)
-
-        self.__client.conect_to_server()
         self.__root.mainloop()
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    program1 = guiClient()
+    program1.start()
