@@ -14,11 +14,11 @@ class program():
         guiClient1.start()
 
     def main(self):
-        t = Thread(target=self.ServerStart)
-        t.start()
+        Thread(target=self.ServerStart).start()
+        
+        Thread(target=self.ClientStart).start()
+        Thread(target=self.ClientStart).start()
 
-        s = Thread(target=self.ClientStart)
-        s.start()
 
 if __name__ == "__main__":
     program1 = program()

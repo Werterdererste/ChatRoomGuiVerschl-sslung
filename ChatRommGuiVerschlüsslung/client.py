@@ -1,21 +1,25 @@
 import socket
-from _thread import *
+from threading import Thread
+import tkinter as tk
 
 class client():
     
-    def __init__(self):
+    def __init__(self, root):
         self.__ip = "127.0.0.1"
         self.__port = 5000
-        print("I")
         self.__s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.__root = root
 
     def conect_to_server(self):
-        print("g")
+        
         self.__s.connect((self.__ip, self.__port))
-        #start_new_thread(self.emfangeNachrichten())
+        Thread(target=self.emfangeNachrichten).start()
 
     def send_nachricht(self ,nachricht):       
             self.__s.send(nachricht.encode())
 
     def emfangeNachrichten(self):
-        print(self.__s.recv(1024).decode()) 
+        while True:
+            print("emfange")
+            msg = self.__s.recv(1024).decode()
+            tk.Label(self.__root, text=msg, bg='#f2f2f2').pack(anchor="e" ,side="top")

@@ -11,7 +11,7 @@ class server():
 
     def thred_client(self, clientSocket):
         while True:
-            msg = clientSocket.recv(1024).decode() 
+            msg = clientSocket.recv(1024)
             self.weiterleiten(msg, clientSocket)
 
     def weiterleiten(self, msg, clientSocket):
@@ -21,7 +21,7 @@ class server():
                 i.send(msg)
 
     def start(self):
-        print("m")
+        print("server start")
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serverSocket:
             serverSocket.bind((self.__ip, self.__port))
             serverSocket.listen(10)
