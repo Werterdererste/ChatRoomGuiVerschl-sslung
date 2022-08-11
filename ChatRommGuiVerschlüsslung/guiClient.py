@@ -49,3 +49,4 @@ class guiClient:
         )
 
         self.__root.mainloop()
+        self.__client.disconect_to_server()

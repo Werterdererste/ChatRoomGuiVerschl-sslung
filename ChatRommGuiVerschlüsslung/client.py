@@ -7,22 +7,35 @@ class client:
     def __init__(self, root, listbar):
         self.__ip = "127.0.0.1"
         self.__port = 5000
-        self.__s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.__serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         self.__listbar = listbar
 
     def conect_to_server(self):
-        self.__s.connect((self.__ip, self.__port))
-        Thread(target=self.emfangeNachrichten).start()
+        try:
+            self.__serversocket.connect((self.__ip, self.__port))
+            Thread(target=self.emfangeNachrichten).start()
+        except:
+            print("keine verbindung zum server moeglich")
+            self.__serversocket.close()
+        
+    def disconect_to_server(self):
+        self.__serversocket.close()
+
 
     def send_nachricht(self, nachricht):
-        self.__s.send(nachricht.encode())
+        try:
+            self.__serversocket.send(nachricht.encode())
+        except:
+                print("conection lose")
 
     def emfangeNachrichten(self):
         while True:
-            print("emfange")
-            msg = self.__s.recv(1024).decode()
-            self.nachrichtAnzeigen(msg)
+            try:
+                msg = self.__serversocket.recv(1024).decode()
+                self.nachrichtAnzeigen(msg)
+            except:
+                exit()
 
     def nachrichtAnzeigen(self, msg):
         tk.Label(self.__listbar, text=msg, bg="#f2f2f2").pack(

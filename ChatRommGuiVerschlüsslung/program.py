@@ -17,7 +17,7 @@ class program:
 
         Thread(target=self.ClientStart).start()
         Thread(target=self.ClientStart).start()
-        # Thread(target=self.ClientStart).start()
+        Thread(target=self.ClientStart).start()
 
 if __name__ == "__main__":
     program1 = program()

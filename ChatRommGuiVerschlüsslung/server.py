@@ -10,13 +10,21 @@ class server:
 
     def thred_client(self, clientSocket):
         while True:
-            msg = clientSocket.recv(1024)
-            self.weiterleiten(msg, clientSocket)
+            try:
+                msg = clientSocket.recv(1024)
+                self.weiterleiten(msg, clientSocket)
+            except:
+                print("client disconect")
+                for i  in self.__clientlist:
+                    if i == clientSocket:
+                        self.__clientlist.remove(i)
+                clientSocket.close()
+                exit()
+            
 
     def weiterleiten(self, msg, clientSocket):
         for i in self.__clientlist:
             if i != clientSocket:
-                print("send")
                 i.send(msg)
 
     def start(self):
