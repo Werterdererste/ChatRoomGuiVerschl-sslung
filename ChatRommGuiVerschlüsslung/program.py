@@ -3,8 +3,7 @@ from server import server
 from threading import Thread
 
 
-class program():  
-    
+class program:
     def ServerStart(self):
         server1 = server()
         server1.start()
@@ -15,10 +14,10 @@ class program():
 
     def main(self):
         Thread(target=self.ServerStart).start()
-        
-        Thread(target=self.ClientStart).start()
-        Thread(target=self.ClientStart).start()
 
+        Thread(target=self.ClientStart).start()
+        Thread(target=self.ClientStart).start()
+        # Thread(target=self.ClientStart).start()
 
 if __name__ == "__main__":
     program1 = program()

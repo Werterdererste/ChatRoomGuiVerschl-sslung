@@ -2,8 +2,7 @@ import socket
 from _thread import *
 
 
-class server():
-
+class server:
     def __init__(self):
         self.__ip = "127.0.0.1"
         self.__port = 5000
@@ -24,15 +23,13 @@ class server():
         print("server start")
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serverSocket:
             serverSocket.bind((self.__ip, self.__port))
-            serverSocket.listen(10)
             self.lisenForClients(serverSocket)
-            
-    def lisenForClients(self, serverSocket):
-        while True: 
+
+    def lisenForClients(self, serverSocket):            
+       
+        serverSocket.listen(10)
+        while True:
             clientSocket, addr = serverSocket.accept()
             self.__clientlist.append(clientSocket)
-            start_new_thread(self.thred_client, (clientSocket,))
 
-if __name__ == "__main__":
-    program1 = server()
-    program1.start()
+            start_new_thread(self.thred_client, (clientSocket,))
