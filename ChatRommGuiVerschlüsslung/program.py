@@ -10,14 +10,14 @@ class program:
 
     def ClientStart(self):
         guiClient1 = guiClient()
-        guiClient1.start()
+        guiClient1.Login()
 
     def main(self):
         Thread(target=self.ServerStart).start()
 
         Thread(target=self.ClientStart).start()
         Thread(target=self.ClientStart).start()
-        Thread(target=self.ClientStart).start()
+        #Thread(target=self.ClientStart).start()
 
 if __name__ == "__main__":
     program1 = program()

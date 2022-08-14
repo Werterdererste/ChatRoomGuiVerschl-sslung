@@ -41,3 +41,7 @@ class server:
             self.__clientlist.append(clientSocket)
 
             start_new_thread(self.thred_client, (clientSocket,))
+
+if __name__ == "__main__":
+    program1 = server()
+    program1.start()

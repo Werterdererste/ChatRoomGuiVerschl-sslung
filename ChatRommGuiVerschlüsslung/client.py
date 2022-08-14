@@ -9,7 +9,7 @@ class client:
         self.__port = 5000
         self.__serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        self.__listbar = listbar
+        self.__listbox = listbar
 
     def conect_to_server(self):
         try:
@@ -21,7 +21,6 @@ class client:
         
     def disconect_to_server(self):
         self.__serversocket.close()
-
 
     def send_nachricht(self, nachricht):
         try:
@@ -38,6 +37,4 @@ class client:
                 exit()
 
     def nachrichtAnzeigen(self, msg):
-        tk.Label(self.__listbar, text=msg, bg="#f2f2f2").pack(
-            anchor="w", side="top", padx=5, pady=5, ipadx=5, ipady=5
-        )
+        self.__listbox.insert("end", msg)
