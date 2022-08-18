@@ -4,21 +4,22 @@ import tkinter as tk
 
 
 class client:
-    def __init__(self, root, listbar):
+    def __init__(self, listbar):
         self.__ip = "127.0.0.1"
         self.__port = 5000
         self.__serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         self.__listbox = listbar
 
-    def conect_to_server(self):
+    def conect_to_server(self, name):
         try:
             self.__serversocket.connect((self.__ip, self.__port))
+            self.__serversocket.send(name.encode())
             Thread(target=self.emfangeNachrichten).start()
         except:
             print("keine verbindung zum server moeglich")
             self.__serversocket.close()
-        
+
     def disconect_to_server(self):
         self.__serversocket.close()
 
@@ -26,7 +27,7 @@ class client:
         try:
             self.__serversocket.send(nachricht.encode())
         except:
-                print("conection lose")
+            print("conection lose")
 
     def emfangeNachrichten(self):
         while True:
