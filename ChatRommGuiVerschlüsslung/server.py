@@ -1,19 +1,17 @@
 import socket
 from _thread import *
 
-
 class server:
     def __init__(self):
         self.__ip = "127.0.0.1"
         self.__port = 5000
         self.__clientlist = []
-        self.__nameList = []
 
-    def thred_client(self, clientSocket, name):
+    def thred_client(self, clientSocket):
         while True:
             try:
                 msg = clientSocket.recv(1024)
-                self.weiterleiten(name + ": ".encode() + msg, clientSocket)
+                self.weiterleiten(msg, clientSocket)
             except:
                 print("client disconect")
                 for i  in self.__clientlist:
@@ -34,14 +32,13 @@ class server:
             self.lisenForClients(serverSocket)
 
     def lisenForClients(self, serverSocket):                   
-        serverSocket.listen(10)
+        serverSocket.listen(1)
         while True:
             clientSocket, addr = serverSocket.accept()
             name = clientSocket.recv(1024)
             print("Client Conect:"+ name.decode())
             self.__clientlist.append(clientSocket)
-            self.__nameList.append(name.decode())
-            start_new_thread(self.thred_client, (clientSocket, name,))
+            start_new_thread(self.thred_client, (clientSocket, ))
 
 if __name__ == "__main__":
     program1 = server()

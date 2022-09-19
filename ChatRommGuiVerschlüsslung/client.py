@@ -1,7 +1,7 @@
 import socket
 from threading import Thread
 import tkinter as tk
-
+from verschluesslung import verschluesslung
 
 class client:
     def __init__(self, listbar):
@@ -10,6 +10,7 @@ class client:
         self.__serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         self.__listbox = listbar
+        self.__verschluesslung = verschluesslung()
 
     def conect_to_server(self, name):
         try:
@@ -23,9 +24,10 @@ class client:
     def disconect_to_server(self):
         self.__serversocket.close()
 
-    def send_nachricht(self, nachricht):
+    def send_nachricht(self, nachricht, ):
         try:
-            self.__serversocket.send(nachricht.encode())
+            print(nachricht.encode())
+            self.__serversocket.send(self.__verschluesslung.Verschluesseln(nachricht).encode())
         except:
             print("conection lose")
 
@@ -33,7 +35,7 @@ class client:
         while True:
             try:
                 msg = self.__serversocket.recv(1024).decode()
-                self.nachrichtAnzeigen(msg)
+                self.nachrichtAnzeigen(self.__verschluesslung.Entschluessln(msg))
             except:
                 exit()
 

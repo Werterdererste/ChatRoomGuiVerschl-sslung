@@ -1,8 +1,6 @@
 import tkinter as tk
-from turtle import width
 from client import client
 from threading import Thread
-
 
 class guiClient:
     def __init__(self):
@@ -19,11 +17,10 @@ class guiClient:
     def senden(self):
         if self.__entry.get():
             self.__listbox.insert("end", "You: " + self.__entry.get())
-            self.__client.send_nachricht(self.__entry.get())
+            self.__client.send_nachricht(self.__name+": "+ self.__entry.get())
             self.__entry.delete(0, "end")
 
     def Chat(self):
-
         list = self.__root.grid_slaves()
         for l in list:
             l.destroy()
@@ -70,7 +67,6 @@ class guiClient:
             self.Chat()
 
     def Login(self):
-
         self.__root.title("login")
         self.__root.geometry("300x200")
         self.__root.resizable(width=False, height=False)

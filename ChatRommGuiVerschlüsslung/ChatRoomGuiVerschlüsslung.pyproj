@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="client.py" />
     <Compile Include="guiClient.py" />
+    <Compile Include="verschluesslung.py" />
     <Compile Include="program.py" />
     <Compile Include="server.py" />
   </ItemGroup>
